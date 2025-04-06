@@ -1,0 +1,54 @@
+{#
+/**
+ * @file
+ * Aurora's theme implementation to display a single page with inline styles.
+ */
+#}
+<div class="page-wrapper" style="font-family: 'Segoe UI', sans-serif; background: #f9fafb; color: #1f2937;">
+
+  {% if page.top_banner %}
+    <div class="top-banner" style="background: linear-gradient(to right, #3b82f6, #6366f1); color: white; padding: 1rem; text-align: center;">
+      {{ page.top_banner }}
+    </div>
+  {% endif %}
+
+  <header class="site-header" style="background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+    <div style="max-width: 1200px; margin: auto; padding: 1rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+      {% if page.logo %}
+        <div class="logo" style="padding: 0.5rem 0;">
+          {{ page.logo }}
+        </div>
+      {% endif %}
+
+      {% if page.navigation %}
+        <nav class="navigation" style="padding: 0.5rem 0;">
+          {{ page.navigation }}
+        </nav>
+      {% endif %}
+    </div>
+  </header>
+
+  <main class="site-main">
+    <div style="max-width: 1200px; margin: auto; padding: 2rem 1rem;">
+      <div style="display: flex; flex-direction: column; gap: 1.5rem; flex-wrap: wrap;">
+
+        {% if page.left_sidebar %}
+          <aside class="left-sidebar" style="width: 100%; background: #f3f4f6; padding: 1rem; border-radius: 0.5rem;">
+            {{ page.left_sidebar }}
+          </aside>
+        {% endif %}
+
+        <div class="content" style="width: 100%;">
+          {{ page.content }}
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  {% if page.footer %}
+    <footer class="site-footer" style="background: #1f2937; color: #e5e7eb; padding: 2rem; text-align: center; margin-top: 2rem;">
+      {{ page.footer }}
+    </footer>
+  {% endif %}
+</div>

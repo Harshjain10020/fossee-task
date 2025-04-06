@@ -1,0 +1,16 @@
+name: Aurora
+type: theme
+description: 'A custom responsive Drupal 10 theme.'
+core_version_requirement: ^10
+base theme: false
+
+regions:
+  top_banner: 'Top Banner'
+  logo: 'Logo'
+  navigation: 'Navigation Menu'
+  left_sidebar: 'Left Sidebar'
+  content: 'Content'
+  footer: 'Footer'
+
+libraries:
+  - aurora/global-styling

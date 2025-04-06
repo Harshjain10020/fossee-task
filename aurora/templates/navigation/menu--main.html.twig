@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Aurora's theme implementation for the main menu.
+ */
+#}
+{% import _self as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see https://twig.symfony.com/doc/3.x/tags/macro.html
+#}
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <ul{{ attributes.addClass(['flex', 'flex-col', 'md:flex-row', 'gap-4', 'md:gap-8']) }}>
+    {% else %}
+      <ul class="submenu bg-white border shadow-lg rounded mt-1 py-2 absolute z-10">
+    {% endif %}
+    {% for item in items %}
+      {%
+        set item_classes = [
+          'menu-item',
+          item.is_expanded ? 'menu-item--expanded',
+          item.is_collapsed ? 'menu-item--collapsed',
+          item.in_active_trail ? 'menu-item--active-trail',
+        ]
+      %}
+      <li{{ item.attributes.addClass(item_classes) }}>
+        <a href="{{ item.url }}" class="hover:text-blue-600 font-medium {{ item.in_active_trail ? 'text-blue-600' : 'text-gray-700' }}">{{ item.title }}</a>
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}
