@@ -1,54 +1,60 @@
 {#
 /**
  * @file
- * Aurora's theme implementation to display a single page with inline styles.
+ * Aurora's theme implementation to display a single page.
+ * Updated to match the screenshot layout.
  */
 #}
-<div class="page-wrapper" style="font-family: 'Segoe UI', sans-serif; background: #f9fafb; color: #1f2937;">
-
+<div class="page-wrapper">
+  {# Top Banner Region - Blue Welcome Area #}
   {% if page.top_banner %}
-    <div class="top-banner" style="background: linear-gradient(to right, #3b82f6, #6366f1); color: white; padding: 1rem; text-align: center;">
+    <div class="top-banner">
       {{ page.top_banner }}
     </div>
   {% endif %}
 
-  <header class="site-header" style="background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-    <div style="max-width: 1200px; margin: auto; padding: 1rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+  {# Header with Logo and Navigation #}
+  <header class="site-header">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 15px;">
       {% if page.logo %}
-        <div class="logo" style="padding: 0.5rem 0;">
+        <div class="logo">
           {{ page.logo }}
         </div>
       {% endif %}
 
       {% if page.navigation %}
-        <nav class="navigation" style="padding: 0.5rem 0;">
+        <div class="navigation">
           {{ page.navigation }}
-        </nav>
+        </div>
       {% endif %}
     </div>
   </header>
 
+  {# Main Content Area #}
   <main class="site-main">
-    <div style="max-width: 1200px; margin: auto; padding: 2rem 1rem;">
-      <div style="display: flex; flex-direction: column; gap: 1.5rem; flex-wrap: wrap;">
-
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 15px;">
+      <div style="display: flex; flex-direction: column;">
+        {# Left Sidebar - Shows as main content in screenshot #}
         {% if page.left_sidebar %}
-          <aside class="left-sidebar" style="width: 100%; background: #f3f4f6; padding: 1rem; border-radius: 0.5rem;">
+          <aside class="left-sidebar">
             {{ page.left_sidebar }}
           </aside>
         {% endif %}
 
-        <div class="content" style="width: 100%;">
+        {# Content Region - Below left sidebar in screenshot #}
+        <div class="content">
           {{ page.content }}
         </div>
-
       </div>
     </div>
   </main>
 
+  {# Footer Region #}
   {% if page.footer %}
-    <footer class="site-footer" style="background: #1f2937; color: #e5e7eb; padding: 2rem; text-align: center; margin-top: 2rem;">
-      {{ page.footer }}
+    <footer class="site-footer">
+      <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 15px;">
+        {{ page.footer }}
+      </div>
     </footer>
   {% endif %}
 </div>
