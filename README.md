@@ -109,4 +109,4 @@ This theme is provided under the [MIT License](LICENSE).
 
 ## Credits
 
-Developed by [Your Name] for the FOSSEE project.
+Developed by Harsh Jain  for the FOSSEE project.
